@@ -9,12 +9,8 @@ runs:
     - name: Print github.action_path
       run: echo "github.action_path is ${{ github.action_path }}"
       shell: bash
-
-    - name: Set Node.js version from environment variable
-      run: echo "NODE_VERSION=$(cat ${{ github.action_path }}/.nvmrc)" >> $GITHUB_ENV
-      shell: bash
     
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ github.action_path }}/.nvmrc
