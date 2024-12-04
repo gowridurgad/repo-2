@@ -7,7 +7,7 @@ runs:
       uses: actions/checkout@v4
 
     - name: Create symbolic link for .nvmrc
-      run: ln -s ${{ github.action_path }}/.nvmrc ./.nvmrc
+      run: ln -s ${{ github.action_path }}/.nvmrc 
       shell: bash
 
     - name: Set up Node.js
