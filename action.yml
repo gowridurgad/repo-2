@@ -5,12 +5,12 @@ runs:
   steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
-    - name: Set Node.js version from environment variable
-      run: echo "NODE_VERSION=$(cat ${{ github.action_path }}/.nvmrc)" >> $GITHUB_ENV
+
+    - name: Create symbolic link for .nvmrc
+      run: ln -s ${{ github.action_path }}/.nvmrc ./.nvmrc
       shell: bash
-    
+
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v4  
       with:
-         node-version: ${{ env.NODE_VERSION }}
+        node-version-file: ./.nvmrc
